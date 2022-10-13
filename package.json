@@ -1,0 +1,64 @@
+{
+  "name": "NSSA",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "antd-theme-generator": "^1.2.10",
+    "axios": "^0.21.4",
+    "core-js": "^3.6.5",
+    "echarts": "^5.2.2",
+    "element-resize-detector": "^1.2.3",
+    "element-ui": "^2.9.2",
+    "js-base64": "^3.7.2",
+    "less": "^2.7.3",
+    "moment": "^2.29.4",
+    "qs": "^6.10.1",
+    "sass-resources-loader": "^2.2.4",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.3",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-jsx-v-model": "^2.0.3",
+    "crypto-js": "^4.1.1",
+    "element-theme": "^2.0.1",
+    "element-theme-chalk": "^2.15.6",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "less-loader": "^4.1.0",
+    "lodash.pick": "^4.4.0",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuex": "^3.6.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
