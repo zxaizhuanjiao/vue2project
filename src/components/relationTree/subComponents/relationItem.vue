@@ -1,20 +1,24 @@
 <template>
     <div>
-        <RelationTree></RelationTree>
+        relationItem
     </div>
 </template>
 <script>
-    import RelationTree from '../../components/relationTree/index.vue'
-
     export default {
-        name: 'Dashboard',
+        name: 'RelationItem',
         components: {
-            RelationTree
+
+        },
+        props: {
+
         },
         data() {
             return {
 
             }
+        },
+        watch: {
+
         },
         created() {
 
@@ -28,5 +32,5 @@
     }
 </script>
 <style>
-
+    
 </style>
