@@ -42,13 +42,21 @@
                 <el-header>
                     <div class="title_nav" @click="toggleCollapsed">
                         <img src="../../assets/collapsed.png" style="width: 16px;height: 14px;">
-                        <div style="display: inline-block;padding-left: 20px;">
+                        <!-- <div style="display: inline-block;padding-left: 20px;">
                             <el-breadcrumb class="breadcrumb">
                                 <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
                                     {{ item.meta.title }}
                                 </el-breadcrumb-item>
                             </el-breadcrumb>
-                        </div>
+                        </div> -->
+                    </div>
+
+                    <div style="float: left; padding-top: 24px; margin-left: 16px;">
+                        <el-breadcrumb class="breadcrumb">
+                            <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
+                                {{ item.meta.title }}
+                            </el-breadcrumb-item>
+                        </el-breadcrumb>
                     </div>
                         
                     <div style="float: right; line-height: 60px; margin-right: 10px; display:flex">
@@ -854,5 +862,10 @@
 
     .el-notification__group {
         width: 290px !important;
+    }
+
+    .breadcrumb .el-breadcrumb__item:last-child .el-breadcrumb__inner  {
+        color: #303133 !important;
+        font-weight: 500;
     }
 </style>

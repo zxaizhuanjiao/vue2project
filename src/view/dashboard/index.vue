@@ -1,19 +1,33 @@
 <template>
     <div>
-        <RelationTree></RelationTree>
+        <CreateRule :formDatas="formDatas" :rulesData="rulesData" @rulesChange="rulesChange" />
     </div>
 </template>
 <script>
-    import RelationTree from '../../components/relationTree/index.vue'
+    import CreateRule from '../../components/createRule/createRule.vue'
 
     export default {
         name: 'Dashboard',
         components: {
-            RelationTree
+            CreateRule
         },
         data() {
             return {
-
+                formDatas:[
+                    {
+                        label:"条件名1",
+                        value:"one"
+                    },
+                    {
+                        label:"条件名2",
+                        value:"two"
+                    }
+                ],
+                rulesData:{//初始化条件对象或者，已保存的条件对象
+                    relation:"and",
+                    conditions:[],
+                    children:[]
+                }
             }
         },
         created() {
@@ -23,7 +37,9 @@
 
         },
         methods: {
-
+            rulesChange(datas){
+                console.log(datas)//输出的条件对象
+            }
         }
     }
 </script>
