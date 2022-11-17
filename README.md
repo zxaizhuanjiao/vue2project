@@ -1,4 +1,4 @@
-# NSSA
+# Firework
 
 ## Project setup
 ```

@@ -1,36 +1,24 @@
 <template>
     <div>
-        relationItem
+        辅助配置
     </div>
 </template>
 <script>
     export default {
-        name: 'RelationItem',
-        components: {
-
-        },
-        props: {
-
-        },
+        name: 'AssistConfig',
         data() {
             return {
-
+                
             }
         },
-        watch: {
-
-        },
         created() {
-
-        },
+            
+        },  
         mounted() {
-
+            
         },
         methods: {
-
+            
         }
     }
 </script>
-<style>
-    
-</style>

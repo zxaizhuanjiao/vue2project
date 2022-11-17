@@ -1,3 +1,8 @@
+const webpack = require('webpack')
+const { name } = require('./package');
+const path = require('path');
+let timeStamp = new Date().getTime();
+
 module.exports = {
     outputDir: 'dist',   //build输出目录
     assetsDir: 'assets', //静态资源目录（js, css, img）
@@ -22,6 +27,7 @@ module.exports = {
         }
     },
     runtimeCompiler: true,
+    filenameHashing: false,
     chainWebpack: config => {
         const oneOfsMap = config.module.rule('scss').oneOfs.store
         oneOfsMap.forEach(item => {
@@ -37,6 +43,19 @@ module.exports = {
                 })
                 .end()
         })
+    },
+    configureWebpack: {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $:"jquery",
+                jQuery:"jquery",
+                "windows.jQuery":"jquery"
+            })
+        ],
+        output: {
+            filename: `js/js[name].${timeStamp}.js`,
+            chunkFilename: `js/chunk.[id].${timeStamp}.js`,
+        }
     }
 };
 

@@ -4,7 +4,7 @@
             <el-aside :class="collapsed ? 'left_close' : 'left_open'">
                 <div class="wt_aside_title">
                     <img src="../../assets/wtIcon.png" style="width: 22px;height: 22px;vertical-align:middle;">
-                    <span v-if="!collapsed" style="padding-left: 10px;color: #fff;font-size: 18px;font-weight: bold;">工控安全审计系统</span>
+                    <span v-if="!collapsed" style="padding-left: 10px;color: #fff;font-size: 18px;font-weight: bold;">工业防火墙</span>
                 </div>
                 <el-menu
                     :collapse-transition="false"
@@ -39,21 +39,23 @@
                 </el-menu>
             </el-aside>
             <el-container>
-                <el-header>
+                <el-header style="box-shadow: 0px 1px 4px 0px rgba(0,21,41,0.12);z-index: 1000;">
                     <div class="title_nav" @click="toggleCollapsed">
                         <img src="../../assets/collapsed.png" style="width: 16px;height: 14px;">
-                        <div style="display: inline-block;padding-left: 20px;">
-                            <el-breadcrumb class="breadcrumb">
-                                <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
-                                    {{ item.meta.title }}
-                                </el-breadcrumb-item>
-                            </el-breadcrumb>
-                        </div>
+                    </div>
+
+                    <div style="float: left; padding-top: 24px; margin-left: 16px;">
+                        <el-breadcrumb class="breadcrumb">
+                            <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
+                                {{ item.meta.title }}
+                            </el-breadcrumb-item>
+                        </el-breadcrumb>
                     </div>
                         
                     <div style="float: right; line-height: 60px; margin-right: 10px; display:flex">
                         <div class="systemTime">
-                            系统时间：<span id="time"></span>
+                            <!-- 系统时间：<span id="time"></span> -->
+                            系统时间：{{ newTime }}
                         </div>
                         <el-dropdown>
                             <span class="el-dropdown-link wt_dropdown_name" style="cursor: pointer;">
@@ -62,7 +64,7 @@
                             </span>
                             <div class="warningNotice">
                                 <el-dropdown-menu slot="dropdown" class="wt_dropdown">
-                                    <el-dropdown-item style="margin-top: 20px;" @click.native="modifyPasswordFunc">
+                                    <el-dropdown-item v-if="false" style="margin-top: 20px;" @click.native="modifyPasswordFunc">
                                         <div class="userData">
                                             <img src="../../assets/navbar/navbar2.png">
                                             <span class="verticalmiddle">修改密码</span>
@@ -74,13 +76,13 @@
                                             <span class="verticalmiddle">退出系统</span>
                                         </div>
                                     </el-dropdown-item>
-                                    <el-dropdown-item @click.native="operationShutDownFunc('shutdown')">
+                                    <el-dropdown-item v-if="false" @click.native="operationShutDownFunc('shutdown')">
                                         <div class="userData">
                                             <img src="../../assets/navbar/navbar4.png">
                                             <span class="verticalmiddle">关机</span>
                                         </div>
                                     </el-dropdown-item>
-                                    <el-dropdown-item @click.native="operationShutDownFunc('reboot')">
+                                    <el-dropdown-item v-if="false" @click.native="operationShutDownFunc('reboot')">
                                         <div class="userData">
                                             <img src="../../assets/navbar/navbar5.png">
                                             <span class="verticalmiddle">重启</span>
@@ -95,7 +97,7 @@
                         </div>
                     </div>
                 </el-header>
-                <el-main style="padding: 0; height: 100%">
+                <el-main style="padding: 0; height: 100%;background: #F5F7FA;">
                     <div style="height: 100%">
                         <div style="height: 100%; width: 100%; overflow-x:hidden">
                             <router-view></router-view>
@@ -326,7 +328,9 @@
                 timeIntervalFunc: null,
                 currentTimeIntervalFunc: null,
                 audioObj: {},
-                indexBreadcrumbs: []
+                indexBreadcrumbs: [],
+                newTime: '',
+                timer: ''
             }
         },
         computed: {
@@ -353,6 +357,10 @@
         },
         mounted() {
             this.initWebSocket()
+            let _this = this;
+            this.timer = setInterval(() => {
+                _this.newTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss'); // 修改数据date
+            }, 1000)
         //     this.getCurrentTimesFunc()
         //     this.currentTimeIntervalFunc = window.setInterval(() => {
         //         window.clearInterval(this.timeIntervalFunc)
@@ -361,46 +369,49 @@
         // 　　 }, 60000)
         },
         methods: {
-            // async getCurrentTimesFunc() {
-            //     let res = await getCurrentTimes()
-            //     if (res.code === 0) {
-            //         var _timestamp = (new Date(res.data)).getTime(); // 获得毫秒数
-            //         this.timeIntervalFunc = window.setInterval(
-            //             function(){
-            //             //这里可以自定义时间显示格式
-            //             // let tmpInnerHTML = ''
-            //             // tmpInnerHTML = new Date(_timestamp).toLocaleString();
-            //             // document.getElementById('time').innerHTML = new Date(_timestamp).toLocaleString();
-            //             var _year = new Date(_timestamp).getFullYear();
-            //             var _month = new Date(_timestamp).getMonth()+1;
-            //             if (_month <= 9) {
-            //                 _month = '0' + _month
-            //             }
-            //             var _date = new Date(_timestamp).getDate()
-            //             if (_date <= 9) {
-            //                 _date = '0' + _date
-            //             }
-            //             var _hours= new Date(_timestamp).getHours();
-            //             if (_hours <= 9) {
-            //                 _hours = '0' + _hours
-            //             }
-            //             var _minutes= new Date(_timestamp).getMinutes();
-            //             if (_minutes <= 9) {
-            //                 _minutes = '0' + _minutes
-            //             }
-            //             var _seconds= new Date(_timestamp).getSeconds();
-            //             if (_seconds <= 9) {
-            //                 _seconds = '0' + _seconds
-            //             }
-            //             document.getElementById('time').innerHTML = _year + '-' + _month + '-' + _date + '&nbsp;' + _hours + ':' + _minutes + ':' + _seconds
-            //             _timestamp += 1000;
-            //         }, 1000);
-            //         this.$once('hook:beforeDestroy', () => {    
-            //             window.clearInterval(this.timeIntervalFunc);    
-            //             this.timeIntervalFunc = null
-            //         })
-            //     }
-            // },
+            async getCurrentTimesFunc() {
+                var date = new Date();
+                var time = date.getFullYear() + '-' + (date.getMonth + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+                this.newTime = time
+                // let res = await getCurrentTimes()
+                // if (res.code === 0) {
+                //     var _timestamp = (new Date(res.data)).getTime(); // 获得毫秒数
+                //     this.timeIntervalFunc = window.setInterval(
+                //         function(){
+                //         //这里可以自定义时间显示格式
+                //         // let tmpInnerHTML = ''
+                //         // tmpInnerHTML = new Date(_timestamp).toLocaleString();
+                //         // document.getElementById('time').innerHTML = new Date(_timestamp).toLocaleString();
+                //         var _year = new Date(_timestamp).getFullYear();
+                //         var _month = new Date(_timestamp).getMonth()+1;
+                //         if (_month <= 9) {
+                //             _month = '0' + _month
+                //         }
+                //         var _date = new Date(_timestamp).getDate()
+                //         if (_date <= 9) {
+                //             _date = '0' + _date
+                //         }
+                //         var _hours= new Date(_timestamp).getHours();
+                //         if (_hours <= 9) {
+                //             _hours = '0' + _hours
+                //         }
+                //         var _minutes= new Date(_timestamp).getMinutes();
+                //         if (_minutes <= 9) {
+                //             _minutes = '0' + _minutes
+                //         }
+                //         var _seconds= new Date(_timestamp).getSeconds();
+                //         if (_seconds <= 9) {
+                //             _seconds = '0' + _seconds
+                //         }
+                //         document.getElementById('time').innerHTML = _year + '-' + _month + '-' + _date + '&nbsp;' + _hours + ':' + _minutes + ':' + _seconds
+                //         _timestamp += 1000;
+                //     }, 1000);
+                //     this.$once('hook:beforeDestroy', () => {    
+                //         window.clearInterval(this.timeIntervalFunc);    
+                //         this.timeIntervalFunc = null
+                //     })
+                // }
+            },
 
             // 路由跳转
             trip(name, path) {
@@ -639,6 +650,12 @@
             }
         },
 
+        beforeDestroy() {
+            if (this.timer) {
+                clearInterval(this.timer); // 在Vue实例销毁前，清除我们的定时器
+            }
+        },
+
         destroyed() {
             window.clearInterval(this.timeIntervalFunc)
             this.timeIntervalFunc = null
@@ -661,7 +678,7 @@
         font-size: 20px;
         font-weight: 400;
         text-align: left;
-        width: 225px;
+        /* width: 225px; */
         float: left;
         line-height: 60px;
         font-family: PingFangSC-Regular, PingFang SC;
@@ -854,5 +871,10 @@
 
     .el-notification__group {
         width: 290px !important;
+    }
+
+    .breadcrumb .el-breadcrumb__item:last-child .el-breadcrumb__inner  {
+        color: #303133 !important;
+        font-weight: 500;
     }
 </style>

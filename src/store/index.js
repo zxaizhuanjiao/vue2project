@@ -4,6 +4,7 @@ import themeData from './modules/themeData'
 import pageRouterData from './modules/pageRouterData'
 import createPersistedState from 'vuex-persistedstate'
 import userData from './modules/userData.js'
+import studyData from './modules/studyData.js'
 
 Vue.use(Vuex);
 
@@ -11,7 +12,8 @@ export default new Vuex.Store({
     modules: {
         themeData,
         pageRouterData,
-        userData
+        userData,
+        studyData
     },
     state: {},
     mutations: {},

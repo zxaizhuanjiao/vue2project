@@ -1,0 +1,141 @@
+.container-padding {
+    padding: 16px 24px;
+}
+
+.container-padding-search {
+    margin-bottom: 0;
+    padding: 18px 20px;
+    background: #fff;
+}
+
+.container-padding-body {
+    margin-top: 16px;
+    background: #fff;
+}
+
+.container-padding-body2 {
+    background: #fff;
+}
+
+.container-padding-body-wrapper {
+    padding: 18px 22px;
+}
+
+.container-padding-body-wrapper .title {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.bgfff {
+    background: #FFFFFF;
+}
+
+.container-padding-search-form .el-form-item--small.el-form-item {
+    /* margin-bottom: 16px !important; */
+    margin-bottom: 0 !important;
+}
+
+.container-padding-search-form2 .el-form-item--small.el-form-item {
+    margin-bottom: 16px !important;
+}
+
+/* 带有tabs样式 */
+.group-detail-tabs .el-tabs__item {
+    font-size: 14px;
+}
+
+.group-detail-tabs .el-tabs .el-tabs__header {
+    padding-left: 30px;
+    padding-right: 30px;
+    background: #fff;
+}
+
+.group-detail-tabs .el-tabs__nav-wrap::after {
+    background-color: transparent;
+}
+
+.group-detail-tabs .el-tabs__content {
+    margin: 0 30px;
+}
+
+/* 搜索中的form */
+.container-padding-search-form.el-form .el-form-item__label, .container-padding-search-form2.el-form .el-form-item__label {
+    padding: 0 0 0 12px !important;
+}
+
+/* 全选所有 */
+.container-choose-all-wrapper .container-choose-all-part1 {
+    float: left;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #303133;
+}
+
+/* 红色竖线 */
+.firewall-title-line {
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.firewall-title-line:before{
+    content: ' ';
+    border-left: 3px solid orangered;
+    display: inline-block;
+    height: 16px;
+    margin-right: 6px;
+}
+
+/* 带有查询项的input输入框 */
+.custom-select.el-select .el-input {
+    width: 160px;
+}
+
+.input-with-select .el-input-group__prepend {
+    background-color: #fff;
+}
+
+.select-checkbox {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 0 6px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+/* 移动 */
+.moveStyle.el-form {
+    padding: 16px 20px 0 20px;
+}
+
+/* number input */
+.el-input-number .el-input__inner {
+    text-align: left !important;
+}
+
+.paddingBottom50 {
+    padding-bottom: 50px;
+}
+
+/* 详情 */
+.detailrow .el-col {
+    padding-top: 14px;
+}
+
+/* 选中radio */
+.el-radio__input.is-checked + .el-radio__label {
+    color: #303133 !important;
+}
+
+/* checkbox */
+.chooseAll .el-checkbox__label {
+    color: #303133;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.chooseAll .el-checkbox__input.is-checked+.el-checkbox__label {
+    color: #303133;
+}

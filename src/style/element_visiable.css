@@ -153,21 +153,21 @@
 .gva-pagination .active {
 	/* background: #F26521; */
 	border-radius: 2px;
-    border: 1px solid #F26521;
-    color: #F26521 !important;
+    /* border: 1px solid #F26521;
+    color: #F26521 !important; */
 }
 
-.el-pagination .el-select .el-input input:visited, .el-pagination .el-select .el-input input:hover {
+/* .el-pagination .el-select .el-input input:visited, .el-pagination .el-select .el-input input:hover {
     border-color: #F26521;
-}
+} */
 
-.gva-pagination .el-pager li.active+li {
+/* .gva-pagination .el-pager li.active+li {
     border-left: 1px solid #ddd !important;
-}
+} */
 
-.gva-pagination .el-pager li:hover {
+/* .gva-pagination .el-pager li:hover {
     color: #F26521 !important;
-}
+} */
 
 .gva-pagination .el-pagination__sizes .el-input .el-input__suffix {
     margin-top: 2px;
@@ -200,13 +200,13 @@
     font-weight: 500;
 }
 
-.el-dialog .el-dialog__headerbtn:hover, .el-dialog .el-dialog__headerbtn:visited {
+/* .el-dialog .el-dialog__headerbtn:hover, .el-dialog .el-dialog__headerbtn:visited {
     color: #F26521;
-}
+} */
 
-.el-dialog .el-dialog__headerbtn .el-dialog__close:hover, .el-dialog .el-dialog__headerbtn .el-dialog__close:visited {
+/* .el-dialog .el-dialog__headerbtn .el-dialog__close:hover, .el-dialog .el-dialog__headerbtn .el-dialog__close:visited {
     color: #F26521;
-}
+} */
 
 .el-dialog .el-dialog__headerbtn {
     top: 16px;
@@ -238,8 +238,8 @@
 }
 
 .el-table th.el-table__cell>.cell {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+    /* padding-left: 14px !important; */
+    /* padding-right: 14px !important; */
 }
 
 .el-button--mini, .el-button--mini.is-round {
@@ -247,42 +247,42 @@
 }
 
 
-.el-radio__input.is-checked .el-radio__inner {
+/* .el-radio__input.is-checked .el-radio__inner {
     border-color: #F26521;
     background: #F26521;
-}
+} */
 
-.el-radio__input .el-radio__inner:hover {
+/* .el-radio__input .el-radio__inner:hover {
     border-color: #F26521;
-}
+} */
 
-.el-radio__input.is-checked+.el-radio__label {
+/* .el-radio__input.is-checked+.el-radio__label {
     color: #F26521;
-}
+} */
 
-.el-button:hover, .el-button:focus {
+/* .el-button:hover, .el-button:focus {
     border-color: #F26521;
     color: #F26521;
     background-color: transparent;
-}
+} */
 
-.el-button--primary:focus, .el-button.el-button--primary:hover {
+/* .el-button--primary:focus, .el-button.el-button--primary:hover {
     color: #fff;
-}
+} */
 
-.el-message-box__btns .el-button:hover {
+/* .el-message-box__btns .el-button:hover {
     border-color: #F26521;
     color: #F26521;
     background-color: #ffffff;
-}
+} */
 
-.el-message-box__btns .el-button.el-button--primary:hover {
+/* .el-message-box__btns .el-button.el-button--primary:hover {
     color: #ffffff;
-}
+} */
 
-.el-table__cell .el-button {
+/* .el-table__cell .el-button {
     border-color: transparent;
-}
+} */
 
 .el-drawer__header {
     padding: 14px 24px;
@@ -295,22 +295,22 @@
     padding: 24px;
 }
 
-.el-input__inner:focus{
+/* .el-input__inner:focus{
     border-color: #F26521;
-}
+} */
 
-.el-select .el-input.is-focus .el-input__inner {
+/* .el-select .el-input.is-focus .el-input__inner {
     border-color: #F26521;
-}
+} */
 
 .el-table .cell {
     line-height: normal;
 }
 
-.el-message--success {
+/* .el-message--success {
     background-color: #fff;
     border-color: transparent;
-}
+} */
 
 .el-message .el-icon-success {
     color: #2DA641;
@@ -499,3 +499,20 @@
 .el-loading-spinner i {
     color: #F26521;
 } */
+
+/* .el-table__fixed-right::before, .el-table__fixed::before {
+    background-color: transparent !important;
+} */
+
+/* .tableFixedStyle .el-table__fixed-right {
+    height: 91px !important;
+} */
+
+/* 解决 elementUI table 使用固定列下方出现的一条线 */
+.tableStyle .el-table__fixed-right::before{
+    background-color:transparent !important ;
+};
+
+.el-checkbox__input.is-checked + .el-checkbox__label {
+    color: #303133 !important;
+}

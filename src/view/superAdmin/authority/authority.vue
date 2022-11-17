@@ -14,24 +14,17 @@
 				<el-table-column align="left" label="角色名称" min-width="180" prop="authorityName" />
 				<el-table-column align="left" fixed="right" label="操作" width="200">
 					<template #default="scope">
-						<el-button
-						  size="small"
-						  type="text"
-						  @click="opdendrawer(scope.row)"
-						>设置权限</el-button>
-						<el-button
-						  size="small"
-						  type="text"
-						  @click="editAuthority(scope.row)"
-						>编辑</el-button>
-						<el-button
-						  size="small"
-						  type="text"
-						  @click="deleteAuth(scope.row)"
-						>删除</el-button>
+						<el-button size="small" type="text" @click="opdendrawer(scope.row)">
+							设置权限
+						</el-button>
+						<el-button size="small" type="text" @click="editAuthority(scope.row)">
+							编辑
+						</el-button>
+						<el-button size="small" type="text" @click="deleteAuth(scope.row)">
+							删除
+						</el-button>
 					</template>
 				</el-table-column>
-				<!-- <el-table-column align="right" width="60"></el-table-column> -->
 			</el-table>	
 		</div>
 		
@@ -72,7 +65,7 @@
 		</el-dialog>
 		
 		<!-- 修改权限 -->
-		<el-drawer v-if="drawer" :visible.sync="drawer" :with-header="false"  size="40%" title="角色配置">
+		<el-drawer v-if="drawer" :visible.sync="drawer" :with-header="false" size="40%" title="角色配置">
 		    <el-tabs :before-leave="autoEnter" class="role-box" type="border-card">
 		        <el-tab-pane label="角色菜单">
 					<Menus ref="menus" :row="activeRow" @changeRow="changeRow" />
@@ -187,6 +180,7 @@
 				
 				this.$refs.authorityForm.validate(async valid => {
 					if (valid) {
+						this.form.authorityId = parseInt(this.form.authorityId)
 						createAuthority(this.form).then(res => {
 							if (res.code === 0) {
 								this.$message({
@@ -195,11 +189,6 @@
 								})
 								this.getTableData()
 								this.closeDialog()
-							} else {
-								this.$message({
-									type: 'error',
-									message: res.msg
-								})
 							}
 						})
 					}
@@ -216,7 +205,7 @@
 			},
 			
 			autoEnter(activeName, oldActiveName) {
-			    const paneArr = ['menus', 'apis', 'datas']
+			    const paneArr = ['menus', 'apis']
 			    if (oldActiveName) {
 			        if (this.$refs[paneArr[oldActiveName]].needConfirm) {
 			          this.$refs[paneArr[oldActiveName]].enterAndNext()
@@ -243,6 +232,7 @@
 			enterEditDialog() {
 				this.$refs.authorityEditForm.validate(async valid => {
 					if (valid) {
+						this.editForm.authorityId = parseInt(this.editForm.authorityId)
 						updateAuthority(this.editForm).then(res => {
 							if (res.code === 0) {
 								this.$message({

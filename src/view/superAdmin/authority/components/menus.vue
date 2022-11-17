@@ -40,8 +40,10 @@
 	import { 
 		getBaseMenuTree,
 		getMenuAuthority,
-		addMenuAuthority
+		addMenuAuthority,
+		updateAuthority
 	} from '../../../../api/authority.js'
+	
 	export default {
 		name: 'Menus',
 		props: {
@@ -83,6 +85,14 @@
 			this.menuTreeIds = arr		    
 		},
 		methods: {
+			// async setDefault(data) {
+			// 	const res = await updateAuthority({ authorityId: this.row.authorityId, AuthorityName: this.row.authorityName, parentId: this.row.parentId, defaultRouter: data.name })
+			// 	if (res.code === 0) {
+			// 		this.$message({ type: 'success', message: '设置成功' })
+			// 		this.$emit('changeRow', 'defaultRouter', res.data.authority.defaultRouter)
+			// 	}
+			// },
+
 			async relation() {
 				const checkArr = this.$refs.menuTree.getCheckedNodes(false, true)
 				    const res = await addMenuAuthority({
@@ -99,7 +109,7 @@
 			
 			nodeChange() {
 			    this.needConfirm = true
-			},
+			}
 		}
 	}
 </script>

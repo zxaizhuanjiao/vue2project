@@ -1,13 +1,12 @@
 <template>
     <div class="login_div">
         <el-row type="flex" justify="start" align="middle" :style="{ height: (screenHeight) + 'px' }">
-            <el-col :span="12">&nbsp;</el-col>
             <el-col class="login-right" :span="12">
                 <div class="login_content" ref="loginRef">
                     <div class="login_content_title">
-                        <img src="../../assets/wtIcon.png" style="">
+                        <img src="../../assets/wtIcon.png">
                         <span style="">
-                            工控安全审计系统
+                            工控防火墙
                         </span>
                     </div>
                     <div class="login_content_subtitle">
@@ -50,7 +49,7 @@
         </el-row>
         <div class="footer_copyright">
             <span style="padding-right: 3px;">©</span>
-            Copyright ©2016-2022网藤科技 版权所有.工控安全审计系统
+            Copyright ©2016-2022网藤科技 版权所有.工控防火墙
         </div>
     </div>
 </template>
